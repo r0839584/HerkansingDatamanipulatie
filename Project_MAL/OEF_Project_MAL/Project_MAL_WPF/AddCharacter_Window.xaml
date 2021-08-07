@@ -1,0 +1,83 @@
+﻿<Window x:Class="Project_MAL_WPF.AddCharacter_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_MAL_WPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="AddCharacter_Window" Height="450" Width="400">
+    <Grid>
+        <GroupBox Grid.Column="1"
+            Margin="16,10,16,16">
+            <StackPanel>
+                <Label Content="Add New Character" HorizontalAlignment="Center" Margin="10"  FontSize="18" FontWeight="Bold" />
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Name:" Margin="0,5,38,5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtCharacterName"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1" >
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Lastname:" Margin="5,5,39,5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtCharacterLastame"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1" >
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Appearance:" Margin="5,5,17,5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtAppearance"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1" >
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Age:" Margin="5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtAge"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1" >
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="BloodType:" Margin="5,5,51,5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtBloodType"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1" >
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Heigt:" Margin="5,5,51,5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtHeight"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1" >
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Manga:" Margin="5,5,51,5" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="cmbManga" Width="200" BorderThickness="1" Margin="0" />
+                </DockPanel>
+                <Button
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="140" x:Name="btnAddCharacter"
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="0,10,0,0">
+                    _Add Character
+                </Button>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
