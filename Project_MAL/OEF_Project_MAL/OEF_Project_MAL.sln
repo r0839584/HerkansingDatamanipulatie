@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_MAL_WPF", "Project_MAL_WPF\Project_MAL_WPF.csproj", "{61D43403-F375-476A-9DCD-7F4536AE0F99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_MAL_DAL", "Project_MAL_DAL\Project_MAL_DAL.csproj", "{A5A2FC46-2C74-45B9-91C3-ADC8688C8A37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{61D43403-F375-476A-9DCD-7F4536AE0F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61D43403-F375-476A-9DCD-7F4536AE0F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61D43403-F375-476A-9DCD-7F4536AE0F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5A2FC46-2C74-45B9-91C3-ADC8688C8A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5A2FC46-2C74-45B9-91C3-ADC8688C8A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5A2FC46-2C74-45B9-91C3-ADC8688C8A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5A2FC46-2C74-45B9-91C3-ADC8688C8A37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

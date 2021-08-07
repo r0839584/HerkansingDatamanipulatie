@@ -5,8 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_MAL_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="520" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Manga Collection" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"/>
+        <Label Content="User" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"/>
+        <GroupBox Grid.Column="0" Grid.Row="1"
+            Margin="16,10,16,16">
+            <StackPanel>
+                <Label Content="Dennis Luyten" Margin="10" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
+                <materialDesign:PackIcon Kind="Person" HorizontalAlignment="Center" Height="150" Width="150" Margin="10"/>
+                <DockPanel>
+                    <Label Content="Gender:" Margin="10,2"/>
+                    <Label Content="Male" Margin="15,2,10,2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Birthday:" Margin="10,2"/>
+                    <Label Content="Sep 18, 1998" Margin="10,2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Location:" Margin="10,2"/>
+                    <Label Content="Belgium" Margin="8,2,10,2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Joined:" Margin="10,2"/>
+                    <Label Content="Mar 25, 2017" Margin="19,2,10,2"/>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Height="368"
+            Margin="16,10,16,16">
+            <DataGrid x:Name="datagridMangaCollection" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                    <DataGridTextColumn Header="Chapters" Binding="{Binding chapters}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedButton}"
+             Grid.Row="2" Grid.Column="1" Margin="16,0,16,10" x:Name="btnAddManga"
+            ToolTip="Resource name: MaterialDesignRaisedButton">
+            _Add Manga
+        </Button>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedButton}"
+             Grid.Row="2" Grid.Column="2" Margin="16,0,16,10" x:Name="btnDeleteManga"
+            ToolTip="Resource name: MaterialDesignRaisedButton">
+            _Delete Manga
+        </Button>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedButton}"
+             Grid.Row="2" Grid.Column="3" Margin="16,0,16,10" x:Name="btnExtraInfo"
+            ToolTip="Resource name: MaterialDesignRaisedButton">
+            _Extra Info
+        </Button>
     </Grid>
 </Window>

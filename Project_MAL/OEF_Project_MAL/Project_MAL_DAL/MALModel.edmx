@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="authorId" />
+          </Key>
+          <Property Name="authorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="birthday" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="characterId" />
+          </Key>
+          <Property Name="characterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mangaId" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="20" />
+          <Property Name="appearance" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="bloodtype" Type="varchar" MaxLength="20" />
+          <Property Name="height" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="genreId" />
+          </Key>
+          <Property Name="genreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameGenre" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manga">
+          <Key>
+            <PropertyRef Name="mangaId" />
+          </Key>
+          <Property Name="mangaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="authorId" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="chapters" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MangaGenre">
+          <Key>
+            <PropertyRef Name="mangaGenreId" />
+          </Key>
+          <Property Name="mangaGenreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mangaId" Type="int" Nullable="false" />
+          <Property Name="genreId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="MangaGenre" Type="Self.MangaGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="genreId" />
+            </Principal>
+            <Dependent Role="MangaGenre">
+              <PropertyRef Name="genreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manga">
+          <End Role="Manga" Type="Self.Manga" Multiplicity="1" />
+          <End Role="MangaGenre" Type="Self.MangaGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manga">
+              <PropertyRef Name="mangaId" />
+            </Principal>
+            <Dependent Role="MangaGenre">
+              <PropertyRef Name="mangaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_MAL_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Manga" Type="Self.Manga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="authorId" />
+            </Principal>
+            <Dependent Role="Manga">
+              <PropertyRef Name="authorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_MAL_Manga">
+          <End Role="Manga" Type="Self.Manga" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manga">
+              <PropertyRef Name="mangaId" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="mangaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MALModelStoreContainer">
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manga" EntityType="Self.Manga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MangaGenre" EntityType="Self.MangaGenre" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Genre" Association="Self.FK_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="MangaGenre" EntitySet="MangaGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manga" Association="Self.FK_Manga">
+            <End Role="Manga" EntitySet="Manga" />
+            <End Role="MangaGenre" EntitySet="MangaGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_MAL_Author" Association="Self.FK_Project_MAL_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Manga" EntitySet="Manga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_MAL_Manga" Association="Self.FK_Project_MAL_Manga">
+            <End Role="Manga" EntitySet="Manga" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="authorId" />
+          </Key>
+          <Property Name="authorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Mangas" Relationship="Self.FK_Project_MAL_Author" FromRole="Author" ToRole="Manga" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="characterId" />
+          </Key>
+          <Property Name="characterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mangaId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="appearance" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="bloodtype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="height" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Manga" Relationship="Self.FK_Project_MAL_Manga" FromRole="Character" ToRole="Manga" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="genreId" />
+          </Key>
+          <Property Name="genreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameGenre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MangaGenres" Relationship="Self.FK_Genre" FromRole="Genre" ToRole="MangaGenre" />
+        </EntityType>
+        <EntityType Name="Manga">
+          <Key>
+            <PropertyRef Name="mangaId" />
+          </Key>
+          <Property Name="mangaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="authorId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chapters" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Project_MAL_Author" FromRole="Manga" ToRole="Author" />
+          <NavigationProperty Name="Characters" Relationship="Self.FK_Project_MAL_Manga" FromRole="Manga" ToRole="Character" />
+          <NavigationProperty Name="MangaGenres" Relationship="Self.FK_Manga" FromRole="Manga" ToRole="MangaGenre" />
+        </EntityType>
+        <EntityType Name="MangaGenre">
+          <Key>
+            <PropertyRef Name="mangaGenreId" />
+          </Key>
+          <Property Name="mangaGenreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mangaId" Type="Int32" Nullable="false" />
+          <Property Name="genreId" Type="Int32" />
+          <NavigationProperty Name="Genre" Relationship="Self.FK_Genre" FromRole="MangaGenre" ToRole="Genre" />
+          <NavigationProperty Name="Manga" Relationship="Self.FK_Manga" FromRole="MangaGenre" ToRole="Manga" />
+        </EntityType>
+        <Association Name="FK_Project_MAL_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Manga" Type="Self.Manga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="authorId" />
+            </Principal>
+            <Dependent Role="Manga">
+              <PropertyRef Name="authorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_MAL_Manga">
+          <End Role="Manga" Type="Self.Manga" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manga">
+              <PropertyRef Name="mangaId" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="mangaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="MangaGenre" Type="Self.MangaGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="genreId" />
+            </Principal>
+            <Dependent Role="MangaGenre">
+              <PropertyRef Name="genreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manga">
+          <End Role="Manga" Type="Self.Manga" Multiplicity="1" />
+          <End Role="MangaGenre" Type="Self.MangaGenre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manga">
+              <PropertyRef Name="mangaId" />
+            </Principal>
+            <Dependent Role="MangaGenre">
+              <PropertyRef Name="mangaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Project_MALEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Author" EntityType="Self.Author" />
+          <EntitySet Name="Character" EntityType="Self.Character" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" />
+          <EntitySet Name="Manga" EntityType="Self.Manga" />
+          <EntitySet Name="MangaGenre" EntityType="Self.MangaGenre" />
+          <AssociationSet Name="FK_Project_MAL_Author" Association="Self.FK_Project_MAL_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Manga" EntitySet="Manga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_MAL_Manga" Association="Self.FK_Project_MAL_Manga">
+            <End Role="Manga" EntitySet="Manga" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Genre" Association="Self.FK_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="MangaGenre" EntitySet="MangaGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manga" Association="Self.FK_Manga">
+            <End Role="Manga" EntitySet="Manga" />
+            <End Role="MangaGenre" EntitySet="MangaGenre" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MALModelStoreContainer" CdmEntityContainer="Project_MALEntities">
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="MALModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="authorId" ColumnName="authorId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Character">
+            <EntityTypeMapping TypeName="MALModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="characterId" ColumnName="characterId" />
+                <ScalarProperty Name="mangaId" ColumnName="mangaId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="appearance" ColumnName="appearance" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="bloodtype" ColumnName="bloodtype" />
+                <ScalarProperty Name="height" ColumnName="height" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="MALModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="genreId" ColumnName="genreId" />
+                <ScalarProperty Name="nameGenre" ColumnName="nameGenre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manga">
+            <EntityTypeMapping TypeName="MALModel.Manga">
+              <MappingFragment StoreEntitySet="Manga">
+                <ScalarProperty Name="mangaId" ColumnName="mangaId" />
+                <ScalarProperty Name="authorId" ColumnName="authorId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="chapters" ColumnName="chapters" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MangaGenre">
+            <EntityTypeMapping TypeName="MALModel.MangaGenre">
+              <MappingFragment StoreEntitySet="MangaGenre">
+                <ScalarProperty Name="mangaGenreId" ColumnName="mangaGenreId" />
+                <ScalarProperty Name="mangaId" ColumnName="mangaId" />
+                <ScalarProperty Name="genreId" ColumnName="genreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
