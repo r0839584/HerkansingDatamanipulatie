@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="520" Width="800">
+        Title="MainWindow" Height="520" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -71,7 +71,7 @@
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
              Grid.Row="2" Grid.Column="2" Margin="16,0,16,10" x:Name="btnDeleteManga"
-            ToolTip="Resource name: MaterialDesignRaisedButton">
+            ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnDeleteManga_Click">
             _Delete Manga
         </Button>
         <Button

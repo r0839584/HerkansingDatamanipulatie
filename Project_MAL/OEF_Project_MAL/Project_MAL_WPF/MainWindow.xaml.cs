@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Project_MAL_DAL;
 
 namespace Project_MAL_WPF
 {
@@ -31,10 +32,61 @@ namespace Project_MAL_WPF
             addMangaWindow.Show();
         }
 
+        // Button voor te deleten moet nog worden aangemaakt.
+
         private void BtnExtraInfo_Click(object sender, RoutedEventArgs e)
         {
-            MangaInfo_Window mangaInfoWindow = new MangaInfo_Window();
-            mangaInfoWindow.Show();
+            string foutmelding = Valideer("Manga");
+
+            if (datagridMangaCollection.SelectedItem is Manga manga)
+            {
+                HelperClass.mangaId = manga.mangaId;
+
+                MangaInfo_Window mangaInfoWindow = new MangaInfo_Window();
+                mangaInfoWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show(foutmelding, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            datagridMangaCollection.ItemsSource = DatabaseOperations.OphalenMangaCollections();
+        }
+
+        private void BtnDeleteManga_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmelding = Valideer("Manga");
+
+            if (string.IsNullOrWhiteSpace(foutmelding))
+            {
+                Manga manga = datagridMangaCollection.SelectedItem as Manga;
+                int ok = DatabaseOperations.VerwijderenManga(manga);
+
+                if (ok > 0)
+                {
+                    datagridMangaCollection.ItemsSource = DatabaseOperations.OphalenMangaCollections();
+                }
+                else
+                {
+                    MessageBox.Show("Manga is not deleted!");
+                }
+            }
+            else
+            {
+                MessageBox.Show(foutmelding, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public string Valideer(string columnName)
+        {
+            if (columnName == "Manga" && datagridMangaCollection.SelectedItem == null)
+            {
+                return "Select a manga!" + Environment.NewLine;
+            }
+            return "";
         }
     }
 }
