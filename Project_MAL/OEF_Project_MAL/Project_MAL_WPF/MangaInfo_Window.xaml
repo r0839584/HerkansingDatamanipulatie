@@ -61,7 +61,7 @@
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
              Grid.Row="3" Grid.Column="1" Margin="16,16,16,10" x:Name="btnAddCharacter"
-            ToolTip="Resource name: MaterialDesignRaisedButton">
+            ToolTip="Resource name: MaterialDesignRaisedButton" Click="btnAddCharacter_Click">
             _Add Character
         </Button>
         <Button
@@ -73,7 +73,7 @@
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
              Grid.Row="3" Grid.Column="3" Margin="16,16,16,10" x:Name="btnExtraInfo"
-            ToolTip="Resource name: MaterialDesignRaisedButton">
+            ToolTip="Resource name: MaterialDesignRaisedButton" Click="btnExtraInfo_Click">
             _Extra Info
         </Button>
 

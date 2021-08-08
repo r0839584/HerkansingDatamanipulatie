@@ -24,5 +24,17 @@ namespace Project_MAL_WPF
         {
             InitializeComponent();
         }
+
+        private void BtnAddManga_Click(object sender, RoutedEventArgs e)
+        {
+            AddManga_Window addMangaWindow = new AddManga_Window();
+            addMangaWindow.Show();
+        }
+
+        private void BtnExtraInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MangaInfo_Window mangaInfoWindow = new MangaInfo_Window();
+            mangaInfoWindow.Show();
+        }
     }
 }

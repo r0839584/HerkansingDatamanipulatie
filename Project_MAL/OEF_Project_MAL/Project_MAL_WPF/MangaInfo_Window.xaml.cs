@@ -23,5 +23,17 @@ namespace Project_MAL_WPF
         {
             InitializeComponent();
         }
+
+        private void btnAddCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            AddCharacter_Window addCharacterWindow = new AddCharacter_Window();
+            addCharacterWindow.Show();
+        }
+
+        private void btnExtraInfo_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterInfo_Window characterInfoWindow = new CharacterInfo_Window();
+            characterInfoWindow.Show();
+        }
     }
 }
