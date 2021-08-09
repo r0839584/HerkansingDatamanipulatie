@@ -13,10 +13,10 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MangaInfo_Window" Height="550" Width="950" Loaded="Window_Loaded">
+        Title="MangaInfo_Window" Height="700" Width="950" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -34,15 +34,15 @@
                 <Label x:Name="lblNameManga" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 <DockPanel HorizontalAlignment="Center" >
                     <Label Content="Genre:" Margin="5,5,23,5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblGenre" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
+                    <Label x:Name="lblGenre" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
                     <Label Content="Chapters:" Margin="5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblChapters" Margin="10" Width="247" Height="26" />
+                    <Label x:Name="lblChapters" Margin="10" Width="200" Height="26" />
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Author:" Margin="5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblAuthor" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
+                    <Label Content="Author:" Margin="5,5,20,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblAuthor" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 </DockPanel>
             </StackPanel>
         </GroupBox>
@@ -53,6 +53,7 @@
             <DataGrid x:Name="datagridCharacters" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                    <DataGridTextColumn Binding="{Binding lastname}"/>
                     <DataGridTextColumn Header="Age" Binding="{Binding age}"/>
                     <DataGridTextColumn Header="Appearance" Binding="{Binding appearance}"/>
                 </DataGrid.Columns>
@@ -60,23 +61,25 @@
         </GroupBox>
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
-             Grid.Row="3" Grid.Column="1" Margin="16,16,16,10" x:Name="btnAddCharacter"
+             Grid.Row="3" Grid.Column="1" Margin="16,16,10,10" x:Name="btnAddCharacter"
             ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnAddCharacter_Click">
             _Add Character
         </Button>
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
-             Grid.Row="3" Grid.Column="2" Margin="16,16,16,10" x:Name="btnDeleteCharacter"
+             Grid.Row="3" Grid.Column="2" Margin="10,16,10,10" x:Name="btnDeleteCharacter"
             ToolTip="Resource name: MaterialDesignRaisedButton">
             _Delete Character
         </Button>
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
-             Grid.Row="3" Grid.Column="3" Margin="16,16,16,10" x:Name="btnExtraInfo"
+             Grid.Row="3" Grid.Column="3" Margin="10,16,16,10" x:Name="btnExtraInfo"
             ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnExtraInfo_Click">
             _Extra Info
         </Button>
 
-        <Label Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" x:Name="lblFotoManga" Margin="25"/>
+        <StackPanel  Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Margin="25">
+            <Image x:Name="imgManga" Width="300" Height="300"/>
+        </StackPanel>
     </Grid>
 </Window>

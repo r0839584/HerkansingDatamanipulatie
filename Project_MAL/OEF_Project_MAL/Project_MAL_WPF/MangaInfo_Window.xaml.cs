@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Project_MAL_DAL;
 
 namespace Project_MAL_WPF
 {
@@ -38,7 +39,11 @@ namespace Project_MAL_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Mang
+            Manga manga = DatabaseOperations.OphalenMangaAuthorViaId();
+            datagridCharacters.ItemsSource = manga.Characters;
+
+            string url = "MangaImages/" + manga.name + ".jpg";
+            imgManga.Source = new BitmapImage(new Uri(url, UriKind.Relative));
         }
     }
 }

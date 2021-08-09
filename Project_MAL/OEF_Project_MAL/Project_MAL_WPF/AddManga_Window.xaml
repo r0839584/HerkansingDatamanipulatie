@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="AddManga_Window" Height="350" Width="400">
+        Title="AddManga_Window" Height="380" Width="400" Loaded="Window_Loaded">
     <Grid>
         <GroupBox
             Margin="16,10,16,16">
@@ -23,6 +23,14 @@
                     <Label Content="Name:" Margin="5,5,23,5" VerticalAlignment="Bottom"/>
                     <TextBox
                       Width="200" Margin="5" x:Name="txtMangaName"
+                      Style="{StaticResource MaterialDesignTextBox}"
+                      VerticalAlignment="Center" BorderThickness="1">
+                    </TextBox>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Center" >
+                    <Label Content="Type:" Margin="5,5,30,5" VerticalAlignment="Bottom"/>
+                    <TextBox
+                      Width="200" Margin="5" x:Name="txtMangaType"
                       Style="{StaticResource MaterialDesignTextBox}"
                       VerticalAlignment="Center" BorderThickness="1">
                     </TextBox>
@@ -46,7 +54,7 @@
                 <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="120" x:Name="btnAddManga" Margin="10"
-                    ToolTip="Resource name: MaterialDesignRaisedButton">
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnAddManga_Click">
                     _Add Manga
                 </Button>
             </StackPanel>

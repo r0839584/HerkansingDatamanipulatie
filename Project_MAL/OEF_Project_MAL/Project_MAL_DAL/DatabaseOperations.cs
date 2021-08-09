@@ -31,8 +31,62 @@ namespace Project_MAL_DAL
             }
             catch (Exception e)
             {
-                FileOperations.Foutloggen(e);
+                FileOperations.FoutLoggen(e);
                 return 0;
+            }
+        }
+
+        public static List<Character> OphalenCharacters()
+        {
+            using (Project_MALEntities entities = new Project_MALEntities())
+            {
+                return entities.Character.ToList();
+            }
+        }
+
+        public static List<Genre> OphalenGenre()
+        {
+            using (Project_MALEntities entities = new Project_MALEntities())
+            {
+                var query = entities.Genre;
+
+                return query.ToList();
+            }
+        }
+
+        public static List<Author> OphalenAuthor()
+        {
+            using (Project_MALEntities entities = new Project_MALEntities())
+            {
+                var query = entities.Author;
+                return query.ToList();
+            }
+        }
+
+        public static void ToevoegenManga(Manga manga)
+        {
+            try
+            {
+                using (Project_MALEntities entities = new Project_MALEntities())
+                {
+                    entities.Manga.Add(manga);
+                    entities.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                FileOperations.FoutLoggen(e);
+            }
+        }
+        public static Manga OphalenMangaAuthorViaId()
+        {
+            using (Project_MALEntities entities = new Project_MALEntities())
+            {
+                return entities.Manga
+                    .Include(x => x.Characters)
+                    .Include(x => x.Author)
+                    .Where(x => x.mangaId == HelperClass.mangaId)
+                    .SingleOrDefault();
             }
         }
     }

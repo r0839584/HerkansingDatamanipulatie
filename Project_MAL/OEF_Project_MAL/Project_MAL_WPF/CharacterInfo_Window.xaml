@@ -39,7 +39,7 @@
                     <Label x:Name="lblAppearance" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Age:" Margin="5" VerticalAlignment="Center"/>
+                    <Label Content="Age:" Margin="-27,5,5,5" VerticalAlignment="Center"/>
                     <Label x:Name="lblAge" Margin="10" Width="247" Height="26" />
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >

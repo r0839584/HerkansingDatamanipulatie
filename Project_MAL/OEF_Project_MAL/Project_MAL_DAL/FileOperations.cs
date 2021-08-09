@@ -9,7 +9,7 @@ namespace Project_MAL_DAL
 {
     public static class FileOperations
     {
-        public static void Foutloggen(Exception fout)
+        public static void FoutLoggen(Exception fout)
         {
             using (StreamWriter writer = new StreamWriter("foutenbestand.txt", true))
             {
