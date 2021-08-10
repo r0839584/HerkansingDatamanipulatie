@@ -88,5 +88,10 @@ namespace Project_MAL_WPF
             }
             return "";
         }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            datagridMangaCollection.ItemsSource = DatabaseOperations.OphalenMangaCollections();
+        }
     }
 }

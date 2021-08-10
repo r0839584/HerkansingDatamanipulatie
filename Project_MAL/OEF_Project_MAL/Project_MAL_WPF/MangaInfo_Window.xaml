@@ -31,18 +31,18 @@
         <Label Content="Manga Info" Grid.Row="0" Grid.Column="0" Margin="5" HorizontalAlignment="Center" FontWeight="Bold" />
         <GroupBox Grid.Column="0" Grid.Row="1" Margin="16,10,16,16">
             <StackPanel>
-                <Label x:Name="lblNameManga" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
+                <Label x:Name="lblNameManga" HorizontalAlignment="Center" Margin="10" Width="200" Height="26" FontWeight="Bold" FontSize="16"/>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Genre:" Margin="5,5,23,5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblGenre" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
+                    <Label Content="Genre:" Margin="5,5,40,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblGenre" HorizontalAlignment="Center" Margin="10,10,0,10" Width="300" Height="26"/>
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Chapters:" Margin="5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblChapters" Margin="10" Width="200" Height="26" />
+                    <Label Content="Chapters:" Margin="5,5,25,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblChapters" Margin="10,10,100,10" Width="200" Height="26" />
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Author:" Margin="5,5,20,5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblAuthor" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
+                    <Label Content="Author:" Margin="5,5,35,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblAuthor" HorizontalAlignment="Center" Margin="10,10,100,10" Width="200" Height="26"/>
                 </DockPanel>
             </StackPanel>
         </GroupBox>
@@ -68,7 +68,7 @@
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
              Grid.Row="3" Grid.Column="2" Margin="10,16,10,10" x:Name="btnDeleteCharacter"
-            ToolTip="Resource name: MaterialDesignRaisedButton">
+            ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnDeleteCharacter_Click">
             _Delete Character
         </Button>
         <Button

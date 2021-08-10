@@ -9,5 +9,7 @@ namespace Project_MAL_DAL
     public static class HelperClass
     {
         public static int mangaId = -1;
+
+        public static int characterId = -1;
     }
 }

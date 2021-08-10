@@ -36,13 +36,7 @@ namespace Project_MAL_DAL
             }
         }
 
-        public static List<Character> OphalenCharacters()
-        {
-            using (Project_MALEntities entities = new Project_MALEntities())
-            {
-                return entities.Character.ToList();
-            }
-        }
+
 
         public static List<Genre> OphalenGenre()
         {
@@ -89,5 +83,60 @@ namespace Project_MAL_DAL
                     .SingleOrDefault();
             }
         }
+                                   
+        public static Character OphalenCharacters()
+        {
+            using (Project_MALEntities entities = new Project_MALEntities())
+            {
+                return entities.Character.Where(x => x.characterId == HelperClass.characterId).SingleOrDefault();
+            }
+        }
+
+        public static int VerwijderenCharacter(Character character)
+        {
+            try
+            {
+                using (Project_MALEntities entities = new Project_MALEntities())
+                {
+                    entities.Entry(character).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                FileOperations.FoutLoggen(e);
+                return 0;
+            }
+        }
+
+
+        // testen voor genres op te vragen (Werkt niet)
+        //public static Genre OphalenMangaGenre()
+        //{
+        //    using (Project_MALEntities entities = new Project_MALEntities())
+        //    {
+        //        var query = entities.Genre
+        //            .Include(x => x.MangaGenres.Select(sub => sub.Manga));
+
+        //        return query.SingleOrDefault();
+        //    }
+        //}
+
+        //public static Manga OphalenMangaGenres()
+        //{
+        //    using (Project_MALEntities entities = new Project_MALEntities())
+        //    {
+        //        return entities.Manga.Include(x => x.MangaGenres.Select(sub => sub.Genre)).SingleOrDefault();
+        //    }
+        //}
+
+        //public static List<MangaGenre> OphalenMangaGenres()
+        //{
+        //    using (Project_MALEntities entities = new Project_MALEntities())
+        //    {
+        //        var query = entities.MangaGenre.Include(x => x.Genre).Include(x => x.Manga).Where(x=> x.mangaId == HelperClass.mangaId);
+        //        return query.ToList();
+        //    }
+        //}
     }
 }

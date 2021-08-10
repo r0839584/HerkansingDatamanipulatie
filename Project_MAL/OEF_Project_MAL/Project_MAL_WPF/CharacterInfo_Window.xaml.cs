@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Project_MAL_DAL;
 
 namespace Project_MAL_WPF
 {
@@ -22,6 +23,25 @@ namespace Project_MAL_WPF
         public CharacterInfo_Window()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Character character = DatabaseOperations.OphalenCharacters();
+
+            lblName.Content = character.name + " " + character.lastname;
+            lblAppearance.Content = character.appearance;
+            lblAge.Content = character.age;
+            lblBloodType.Content = character.bloodtype.PadLeft(1);
+            lblHeight.Content = character.height.PadLeft(7);
+
+            string url = "CharactersImages/" + character.name + ".jpg";
+            imgCharacter.Source = new BitmapImage(new Uri(url, UriKind.Relative));
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
