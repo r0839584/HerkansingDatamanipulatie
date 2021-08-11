@@ -27,7 +27,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
+        
         <Label Content="Manga Info" Grid.Row="0" Grid.Column="0" Margin="5" HorizontalAlignment="Center" FontWeight="Bold" />
         <GroupBox Grid.Column="0" Grid.Row="1" Margin="16,10,16,16">
             <StackPanel>

@@ -72,6 +72,23 @@ namespace Project_MAL_DAL
                 FileOperations.FoutLoggen(e);
             }
         }
+
+        public static void ToevoegenCharacter(Character character)
+        {
+            try
+            {
+                using (Project_MALEntities entities = new Project_MALEntities())
+                {
+                    entities.Character.Add(character);
+                    entities.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                FileOperations.FoutLoggen(e);
+            }
+        }
+
         public static Manga OphalenMangaAuthorViaId()
         {
             using (Project_MALEntities entities = new Project_MALEntities())

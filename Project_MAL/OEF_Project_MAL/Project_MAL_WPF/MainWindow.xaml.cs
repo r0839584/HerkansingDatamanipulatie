@@ -30,6 +30,7 @@ namespace Project_MAL_WPF
         {
             AddManga_Window addMangaWindow = new AddManga_Window();
             addMangaWindow.Show();
+            this.Close();
         }
 
         // Button voor te deleten moet nog worden aangemaakt.
@@ -87,11 +88,6 @@ namespace Project_MAL_WPF
                 return "Select a manga!" + Environment.NewLine;
             }
             return "";
-        }
-
-        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            datagridMangaCollection.ItemsSource = DatabaseOperations.OphalenMangaCollections();
         }
     }
 }

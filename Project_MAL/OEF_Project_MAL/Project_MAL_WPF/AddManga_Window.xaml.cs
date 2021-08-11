@@ -52,6 +52,10 @@ namespace Project_MAL_WPF
                     if (manga.IsGeldig())
                     {
                         DatabaseOperations.ToevoegenManga(manga);
+
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
                     }
                     else
                     {
@@ -89,7 +93,6 @@ namespace Project_MAL_WPF
                 return "Your manga needs to have a type!";
             }
             return "";
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -29,6 +29,7 @@ namespace Project_MAL_WPF
         {
             AddCharacter_Window addCharacterWindow = new AddCharacter_Window();
             addCharacterWindow.Show();
+            this.Close();
         }
 
         private void BtnExtraInfo_Click(object sender, RoutedEventArgs e)
@@ -62,8 +63,6 @@ namespace Project_MAL_WPF
             lblNameManga.Content = manga.name;
             lblChapters.Content = manga.chapters;
             lblAuthor.Content = manga.Author.name + " " + manga.Author.lastname;
-
-
         }
 
         private void BtnDeleteCharacter_Click(object sender, RoutedEventArgs e)

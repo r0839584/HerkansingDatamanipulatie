@@ -149,7 +149,9 @@
       <Name>Project_MAL_Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="CharactersImages\Kakashi.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="MangaImages\Naruto.jpg" />
   </ItemGroup>

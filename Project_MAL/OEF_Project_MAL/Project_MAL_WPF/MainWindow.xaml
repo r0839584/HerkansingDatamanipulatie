@@ -80,12 +80,5 @@
             ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnExtraInfo_Click">
             _Extra Info
         </Button>
-
-        <Button
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            Width="50" Grid.Column="0" Grid.Row="2" Margin="16,0,16,10" Name="btnRefresh"
-            ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnRefresh_Click">
-            <materialDesign:PackIcon Kind="Reload" />
-        </Button>
     </Grid>
 </Window>
