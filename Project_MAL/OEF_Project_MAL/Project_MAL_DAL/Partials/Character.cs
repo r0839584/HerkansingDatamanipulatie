@@ -9,10 +9,7 @@ namespace Project_MAL_DAL
 {
     public partial class Character : BasisKlasse
     {
-        public override string ToString()
-        {
-            return this.name + " " + this.lastname;
-        }
+        public string FullName => $"{this.name} {this.lastname}";
 
         public override string this[string columnName]
         {

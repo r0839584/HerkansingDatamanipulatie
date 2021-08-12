@@ -39,11 +39,12 @@ namespace Project_MAL_WPF
                 {
                     Author author = cmbAuthor.SelectedItem as Author;
                     // nog uitzoeken hoe ik genre kan toevoegen.
+                    
+                    var genre = new List<Genre>();
+                    genre.Add(cmbGenre.SelectedItem as Genre);
+                    var mangaGenre = new List<MangaGenre>();
 
-                    //ICollection<Genre> genre = new List<Genre>();
-                    //genre.Add(cmbGenre.SelectedItem as Genre);
-
-                    Manga manga = new Manga();
+                    Manga manga = new Manga() { };
                     manga.name = txtMangaName.Text;
                     manga.type = txtMangaType.Text;
                     manga.chapters = chapters;
@@ -53,16 +54,23 @@ namespace Project_MAL_WPF
                     {
                         DatabaseOperations.ToevoegenManga(manga);
 
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.Show();
-                        this.Close();
+                        foreach (var item in genre)
+                        {
+                            mangaGenre.Add(new MangaGenre() { mangaId = manga.mangaId, genreId = item.genreId });
+                        }
+
+                        if (DatabaseOperations.ToevoegenMangaGenres(mangaGenre) > 0)
+                        {
+                            MainWindow mainWindow = new MainWindow();
+                            mainWindow.Show();
+                            this.Close();
+                        }
                     }
                     else
                     {
                         MessageBox.Show(manga.Error);
                     }
                 }
-
             }
             else
             {

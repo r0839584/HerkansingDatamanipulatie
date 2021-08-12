@@ -43,17 +43,15 @@ namespace Project_MAL_WPF
 
             if (string.IsNullOrWhiteSpace(foutmelding))
             {
-                if (int.TryParse(txtAge.Text, out int age) /* && int.TryParse(cmbManga.Text, out int manga) */)
+                if (int.TryParse(txtAge.Text, out int age))
                 {
+                    Character character = new Character() { name = txtCharacterName.Text, lastname = txtCharacterLastame.Text, appearance = txtAppearance.Text,
+                        age = age, bloodtype = txtBloodType.Text, height = txtHeight.Text};
 
-                    Character character = new Character();
-                    character.name = txtCharacterName.Text;
-                    character.lastname = txtCharacterLastame.Text;
-                    character.appearance = txtAppearance.Text;
-                    character.age = age;
-                    character.bloodtype = txtBloodType.Text;
-                    character.height = txtHeight.Text;
-                    //character.mangaId = manga;
+                    if (cmbManga.SelectedItem is Manga manga)
+                    {
+                        character.mangaId = manga.mangaId;
+                    }
 
                     if (character.IsGeldig())
                     {
@@ -101,10 +99,10 @@ namespace Project_MAL_WPF
             {
                 return "Character needs to have a Height!" + Environment.NewLine;
             }
-            //if (columnName == nameof(cmbManga) && cmbManga.SelectedItem == null)
-            //{
-            //    return "The manga needs to have a manga!" + Environment.NewLine;
-            //}
+            if (columnName == nameof(cmbManga) && cmbManga.SelectedItem == null)
+            {
+                return "The Character needs to have a manga!" + Environment.NewLine;
+            }
             return "";
         }
     }

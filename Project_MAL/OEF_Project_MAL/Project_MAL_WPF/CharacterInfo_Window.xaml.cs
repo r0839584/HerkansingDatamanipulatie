@@ -27,7 +27,7 @@ namespace Project_MAL_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Character character = DatabaseOperations.OphalenCharacters();
+            Character character = DatabaseOperations.OphalenMangaCharacters();
 
             lblName.Content = character.name + " " + character.lastname;
             lblAppearance.Content = character.appearance;

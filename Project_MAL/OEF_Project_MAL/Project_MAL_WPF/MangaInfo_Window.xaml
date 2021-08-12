@@ -52,8 +52,7 @@
             Margin="16,10,16,16">
             <DataGrid x:Name="datagridCharacters" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
-                    <DataGridTextColumn Binding="{Binding lastname}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding FullName}"/>
                     <DataGridTextColumn Header="Age" Binding="{Binding age}"/>
                     <DataGridTextColumn Header="Appearance" Binding="{Binding appearance}"/>
                 </DataGrid.Columns>

@@ -19,7 +19,7 @@ namespace Project_MAL_WPF
     /// Interaction logic for MangaInfo_Window.xaml
     /// </summary>
     public partial class MangaInfo_Window : Window
-    {
+    { 
         public MangaInfo_Window()
         {
             InitializeComponent();
@@ -55,7 +55,7 @@ namespace Project_MAL_WPF
         {
             Manga manga = DatabaseOperations.OphalenMangaAuthorViaId();
             datagridCharacters.ItemsSource = manga.Characters;
-            // List voor genre nog achter vragen
+            List<MangaGenre> mangaGenres = DatabaseOperations.OphalenMangaGenres();
 
             string url = "MangaImages/" + manga.name + ".jpg";
             imgManga.Source = new BitmapImage(new Uri(url, UriKind.Relative));
@@ -63,6 +63,13 @@ namespace Project_MAL_WPF
             lblNameManga.Content = manga.name;
             lblChapters.Content = manga.chapters;
             lblAuthor.Content = manga.Author.name + " " + manga.Author.lastname;
+
+
+            foreach (var mangaGenre in mangaGenres)
+            {
+                lblGenre.Content += mangaGenre.Genre.nameGenre + " ";
+            }
+
         }
 
         private void BtnDeleteCharacter_Click(object sender, RoutedEventArgs e)
@@ -77,7 +84,8 @@ namespace Project_MAL_WPF
 
                 if (ok > 0)
                 {
-                    datagridCharacters.ItemsSource = DatabaseOperations.OphalenMangaCollections();
+                    Manga manga = DatabaseOperations.OphalenMangaAuthorViaId();
+                    datagridCharacters.ItemsSource = manga.Characters;
                 }
                 else
                 {
