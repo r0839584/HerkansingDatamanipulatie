@@ -74,8 +74,6 @@ namespace Project_MAL_WPF
 
         private void BtnDeleteCharacter_Click(object sender, RoutedEventArgs e)
         {
-            // nog testen
-
             string foutmelding = Valideer("Character");
             if (string.IsNullOrWhiteSpace(foutmelding))
             {

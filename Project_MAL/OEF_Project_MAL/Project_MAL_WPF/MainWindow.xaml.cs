@@ -64,6 +64,7 @@ namespace Project_MAL_WPF
             if (string.IsNullOrWhiteSpace(foutmelding))
             {
                 Manga manga = datagridMangaCollection.SelectedItem as Manga;
+
                 int ok = DatabaseOperations.VerwijderenManga(manga);
 
                 if (ok > 0)

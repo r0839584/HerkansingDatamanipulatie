@@ -66,35 +66,37 @@ namespace Project_MAL_DAL
             }
         }
 
-        public static void ToevoegenManga(Manga manga)
+        public static int ToevoegenManga(Manga manga)
         {
             try
             {
                 using (Project_MALEntities entities = new Project_MALEntities())
                 {
                     entities.Manga.Add(manga);
-                    entities.SaveChanges();
+                    return entities.SaveChanges();
                 }
             }
             catch (Exception e)
             {
                 FileOperations.FoutLoggen(e);
+                return 0;
             }
         }
 
-        public static void ToevoegenCharacter(Character character)
+        public static int ToevoegenCharacter(Character character)
         {
             try
             {
                 using (Project_MALEntities entities = new Project_MALEntities())
                 {
                     entities.Character.Add(character);
-                    entities.SaveChanges();
+                    return entities.SaveChanges();
                 }
             }
             catch (Exception e)
             {
                 FileOperations.FoutLoggen(e);
+                return 0;
             }
         }
 
@@ -152,6 +154,22 @@ namespace Project_MAL_DAL
             }
         }
 
+        public static int VerwijderenMangaGenre(MangaGenre mangaGenre)
+        {
+            try
+            {
+                using (Project_MALEntities entities = new Project_MALEntities())
+                {
+                    entities.Entry(mangaGenre).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                FileOperations.FoutLoggen(e);
+                return 0;
+            }
+        }
 
         public static List<Genre> OphalenMangaGenre()
         {

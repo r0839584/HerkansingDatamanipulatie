@@ -45,9 +45,14 @@ namespace Project_MAL_WPF
             {
                 if (int.TryParse(txtAge.Text, out int age))
                 {
-                    Character character = new Character() { name = txtCharacterName.Text, lastname = txtCharacterLastame.Text, appearance = txtAppearance.Text,
-                        age = age, bloodtype = txtBloodType.Text, height = txtHeight.Text};
+                    Character character = new Character();
 
+                    character.name = txtCharacterName.Text;
+                    character.lastname = txtCharacterLastame.Text;
+                    character.appearance = txtAppearance.Text;
+                    character.age = age;
+                    character.bloodtype = txtBloodType.Text;
+                    character.height = txtHeight.Text;
                     if (cmbManga.SelectedItem is Manga manga)
                     {
                         character.mangaId = manga.mangaId;
@@ -55,11 +60,14 @@ namespace Project_MAL_WPF
 
                     if (character.IsGeldig())
                     {
-                        DatabaseOperations.ToevoegenCharacter(character);
+                        int ok = DatabaseOperations.ToevoegenCharacter(character);
 
-                        MangaInfo_Window mangaInfoWindow = new MangaInfo_Window();
-                        mangaInfoWindow.Show();
-                        this.Close();
+                        if (ok > 0)
+                        {
+                            MangaInfo_Window mangaInfoWindow = new MangaInfo_Window();
+                            mangaInfoWindow.Show();
+                            this.Close();
+                        }
                     }
                     else
                     {
