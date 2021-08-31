@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="CharacterInfo_Window" Height="450" Width="800">
+        Title="CharacterInfo_Window" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,37 +25,39 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" x:Name="lblFotoCharacter" Margin="50"/>
+        <StackPanel  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="50">
+            <Image x:Name="imgCharacter" Width="300" Height="300"/>
+        </StackPanel>
 
         <Label Content="Characters" Grid.Column="1" Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontWeight="Bold" />
         <GroupBox Grid.Column="1" Grid.Row="1" Margin="16,10,16,16">
             <StackPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Name:" Margin="5,5,23,5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblName" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
+                    <Label Content="Name:" Margin="5,5,55,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblName" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
                     <Label Content="Appearance:" Margin="5,5,23,5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblAppearance" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
+                    <Label x:Name="lblAppearance" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Age:" Margin="5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblAge" Margin="10" Width="247" Height="26" />
+                    <Label Content="Age:" Margin="5,5,65,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblAge" Margin="10" Width="200" Height="26" />
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Blood Type:" Margin="5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblBloodType" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
+                    <Label Content="Blood Type:" Margin="5,5,25,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblBloodType" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 </DockPanel>
                 <DockPanel HorizontalAlignment="Center" >
-                    <Label Content="Height:" Margin="5" VerticalAlignment="Center"/>
-                    <Label x:Name="lblHeight" HorizontalAlignment="Center" Margin="10" Width="270" Height="26"/>
+                    <Label Content="Height:" Margin="0,5,45,5" VerticalAlignment="Center"/>
+                    <Label x:Name="lblHeight" HorizontalAlignment="Center" Margin="10" Width="200" Height="26"/>
                 </DockPanel>
             </StackPanel>
         </GroupBox>
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
              Grid.Row="3" Grid.Column="1" Margin="16,16,16,10" x:Name="btnBack"
-            ToolTip="Resource name: MaterialDesignRaisedButton">
+            ToolTip="Resource name: MaterialDesignRaisedButton" Click="BtnBack_Click">
             _Back
         </Button>
     </Grid>

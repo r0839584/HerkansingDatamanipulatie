@@ -139,6 +139,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project_MAL_DAL\Project_MAL_DAL.csproj">
+      <Project>{a5a2fc46-2c74-45b9-91c3-adc8688c8a37}</Project>
+      <Name>Project_MAL_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_MAL_Models\Project_MAL_Models.csproj">
+      <Project>{825e6f75-9f4e-4943-bac2-e1ef547be709}</Project>
+      <Name>Project_MAL_Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CharactersImages\Kakashi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MangaImages\Naruto.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MangaImages\Fullmetal Alchemist.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CharactersImages\Naruto.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
