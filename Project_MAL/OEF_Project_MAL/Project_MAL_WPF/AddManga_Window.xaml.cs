@@ -39,11 +39,13 @@ namespace Project_MAL_WPF
                 {
                     Author author = cmbAuthor.SelectedItem as Author;
                     
+
+                    // kan nog maar een genre geven aan een manga.
                     var genre = new List<Genre>();
                     genre.Add(cmbGenre.SelectedItem as Genre);
                     var mangaGenre = new List<MangaGenre>();
 
-                    Manga manga = new Manga() { };
+                    Manga manga = new Manga();
                     manga.name = txtMangaName.Text;
                     manga.type = txtMangaType.Text;
                     manga.chapters = chapters;
@@ -90,10 +92,10 @@ namespace Project_MAL_WPF
             {
                 return "The manga needs to have an author!" + Environment.NewLine;
             }
-            //if (columnName == nameof(cmbGenre) && cmbGenre.SelectedItem == null)
-            //{
-            //    return "The manga needs to have a genre!" + Environment.NewLine;
-            //}
+            if (columnName == nameof(cmbGenre) && cmbGenre.SelectedItem == null)
+            {
+                return "The manga needs to have a genre!" + Environment.NewLine;
+            }
             if (columnName == nameof(txtChapters) && int.TryParse(txtChapters.Text, out int chapters) == false)
             {
                 return "Chapters needs to be a number!" + Environment.NewLine;

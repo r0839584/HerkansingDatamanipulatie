@@ -33,8 +33,6 @@ namespace Project_MAL_WPF
             this.Close();
         }
 
-        // Button voor te deleten moet nog worden aangemaakt.
-
         private void BtnExtraInfo_Click(object sender, RoutedEventArgs e)
         {
             string foutmelding = Valideer("Manga");
@@ -67,6 +65,8 @@ namespace Project_MAL_WPF
 
                 int ok = DatabaseOperations.VerwijderenManga(manga);
 
+
+                // een manga deleten werkt nog niet helemaal
                 if (ok > 0)
                 {
                     datagridMangaCollection.ItemsSource = DatabaseOperations.OphalenMangaCollections();

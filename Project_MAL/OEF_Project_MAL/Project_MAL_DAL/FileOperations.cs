@@ -9,6 +9,7 @@ namespace Project_MAL_DAL
 {
     public static class FileOperations
     {
+        // er wordt naar het bestand foutenbestand een error gestuurd als iets niet werkt.
         public static void FoutLoggen(Exception fout)
         {
             using (StreamWriter writer = new StreamWriter("foutenbestand.txt", true))
